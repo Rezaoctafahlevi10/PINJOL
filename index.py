@@ -140,7 +140,7 @@
 #     #     else : 
 #     #         menu()
 # menu()
-import os,time,pandas,csv
+import os,time,pandas,csv,functools
 from datetime import datetime
 
 # a = [1, 2, 3, 4]
@@ -199,24 +199,39 @@ def data_Peminjam () :
     #         print(all_rows)
 
     data = [{'nasabah': 'Rizky', 'tanggal lahir': '14-12-2002', 'alamat': 'Jember','deposit' : 500000,'tanggal depo' :'1-1-2022','angsuran ' : 3},
-         {'nasabah': 'Farid', 'tanggal lahir': '27-10-2002', 'alamat': 'Jember','deposit' : 1000000,'tanggal depo' : '10-3-2022','angsuran ' : 6},
-         {'nasabah': 'Rahyan', 'tanggal lahir': '12-4-1998', 'alamat': 'Jember','deposit' : 2000000,'tanggal depo' :'12-3-2022' ,'angsuran ' : 3},
-         {'nasabah': 'Hefilia', 'tanggal lahir': '12-5-2002', 'alamat': 'Jember','deposit' : 2000000,'tanggal depo' :'12-3-2022' ,'angsuran ' : 3},
-         {'nasabah': 'Adrian', 'tanggal lahir': '12-4-1998', 'alamat': 'Jember','deposit' : 2000000,'tanggal depo' :'12-3-2022' ,'angsuran ' : 3},
-         {'nasabah': 'Raka', 'tanggal lahir': '12-4-1998', 'alamat': 'Jember','deposit' : 2000000,'tanggal depo' :'12-3-2022' ,'angsuran ' : 3},
-         {'nasabah': 'Dony', 'tanggal lahir': '12-4-1998', 'alamat': 'Jember','deposit' : 2000000,'tanggal depo' :'12-3-2022' ,'angsuran ' : 3},
-         {'nasabah': 'Gathan', 'tanggal lahir': '12-4-1998', 'alamat': 'Jember','deposit' : 2000000,'tanggal depo' :'12-3-2022' ,'angsuran ' : 3},
-         {'nasabah': 'Tisna', 'tanggal lahir': '12-4-1998', 'alamat': 'Jember','deposit' : 2000000,'tanggal depo' :'12-3-2022' ,'angsuran ' : 3},
+         {'nasabah': 'Farid', 'tanggal lahir': '27-10-2002', 'alamat': 'Jember','deposit' : 1000000,'tanggal depo' : '01-3-2022','angsuran ' : 6},
+         {'nasabah': 'Rahyan', 'tanggal lahir': '12-4-1998', 'alamat': 'Jember','deposit' : 2000000,'tanggal depo' :'01-3-2022' ,'angsuran ' : 3},
+         {'nasabah': 'Hefilia', 'tanggal lahir': '12-5-2002', 'alamat': 'Surabaya','deposit' : 1000000,'tanggal depo' :'02-3-2022' ,'angsuran ' : 3},
+         {'nasabah': 'Adrian', 'tanggal lahir': '12-4-1998', 'alamat': 'Malang','deposit' : 1000000,'tanggal depo' :'02-3-2022' ,'angsuran ' : 6},
+         {'nasabah': 'Raka', 'tanggal lahir': '12-4-1998', 'alamat': 'Sidoarjo','deposit' : 2000000,'tanggal depo' :'01-3-2022' ,'angsuran ' : 6},
+         {'nasabah': 'Dony', 'tanggal lahir': '12-4-1998', 'alamat': 'Bondowoso','deposit' : 2000000,'tanggal depo' :'07-3-2022' ,'angsuran ' : 3},
+         {'nasabah': 'Gathan', 'tanggal lahir': '12-4-1998', 'alamat': 'Situbondo','deposit' : 500000,'tanggal depo' :'08-3-2022' ,'angsuran ' : 6},
+         {'nasabah': 'Tisna', 'tanggal lahir': '12-4-1998', 'alamat': 'Surabya','deposit' : 500000,'tanggal depo' :'10-3-2022' ,'angsuran ' : 12},
          ]
     df = pandas.DataFrame(data)
     print(df)
 
     deposit = [datas for datas in data if datas['deposit']<2000000] #proses filtering menggunakan List Comprehension
-    print(f'berikut ini data yang sudah di filter dengan deposit yang kurang dari 2 jt : ',deposit,{'nasabah'},{'deposit'})
+    print(f'berikut ini data yang sudah di filter dengan deposit yang kurang dari 2 jt : \n ',deposit,{'nasabah'},{'deposit'})
+
+    deposit =sum (datas ['deposit']for datas in data)
+    print('total uang yang dipinjamkan kepada nasabah : ','Rp', deposit)
 
 def data_pengguna():
-      df = pandas.read_csv('database.csv')
+      data = [
+            {'username ': 'reza','umur': 20},
+            {'username ': 'rendra','umur': 32},
+            {'username ': 'reo','umur': 30},
+            {'username ': 'nafiz','umur': 35},
+            {'username ': 'donny','umur': 40},
+            {'username ': 'farhan','umur': 30},
+         ]
+      df = pandas.DataFrame(data)
       print(df)
+
+      username =sum(datas ['umur'/2]for datas in data)
+      print('total pengguna aplikasi uangku  : ', username,{'umur'})
+
 
 #User
 #1.main program user
