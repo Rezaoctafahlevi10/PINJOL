@@ -140,8 +140,9 @@
 #     #     else : 
 #     #         menu()
 # menu()
-import os,time,pandas,csv,functools
+import os,time,pandas,csv
 from datetime import datetime
+from functools import reduce
 
 # a = [1, 2, 3, 4]
 # sum_a = reduce(lambda x, y:x+y, a)
@@ -165,7 +166,7 @@ tanggal="{}/{}/{}".format(hari,bulan,tahun)
 
 #admin
 def admin_Login():
-    admin = []
+    admin = [] #diubah 
     with open ('admin.csv') as adm:
         admn = csv.reader(adm)
         for i in admn:
@@ -183,21 +184,13 @@ def menu_admin():
     print('\t1. Data Peminjaman')
     print('\t2. Data Pengguna')
     print('\t3. Data Admin')
+    print('\t4. Exit program')
     # statement1 if expression1 else (statement2 if expression2 else statement3)
     choice = input('Menu pilihan : ')
     # tes = (data_Peminjam)if choice =='1'  else ((data_pengguna) if choice =='2'  else menu_admin(name))  (data_admin) if choice =='3' else (menu_admin(name))
-    tes = (data_Peminjam ())if choice =='1'  else ((data_pengguna ()) if choice =='2'  else menu_admin()) 
+    tes = (data_Peminjam ())if choice =='1' else exit_program() if choice=='4' else ((data_pengguna ()) if choice =='2' else  data_admin() if choice =='3'  else menu_admin())
  
-    
-
 def data_Peminjam () :
-    # with open('database.csv') as db :
-    #     db = csv.reader(dbfile)
-    #     all_rows = []
-    #     for row in reader:
-    #         all_rows.append(row)
-    #         print(all_rows)
-
     data = [{'nasabah': 'Rizky', 'tanggal lahir': '14-12-2002', 'alamat': 'Jember','deposit' : 500000,'tanggal depo' :'1-1-2022','angsuran ' : 3},
          {'nasabah': 'Farid', 'tanggal lahir': '27-10-2002', 'alamat': 'Jember','deposit' : 1000000,'tanggal depo' : '01-3-2022','angsuran ' : 6},
          {'nasabah': 'Rahyan', 'tanggal lahir': '12-4-1998', 'alamat': 'Jember','deposit' : 2000000,'tanggal depo' :'01-3-2022' ,'angsuran ' : 3},
@@ -216,6 +209,8 @@ def data_Peminjam () :
 
     deposit =sum (datas ['deposit']for datas in data)
     print('total uang yang dipinjamkan kepada nasabah : ','Rp', deposit)
+    tanya = input('klik enter untuk kembali ke menu admin...')
+    menu_admin()
 
 def data_pengguna():
       data = [
@@ -228,10 +223,29 @@ def data_pengguna():
          ]
       df = pandas.DataFrame(data)
       print(df)
+      
+      lists = sorted(data, key=lambda x: x['umur'],reverse=False) #sorted bedasarkan umur termudah  (asc)
+      print('berikut ini adalah sorting bedasarkan umur data pengguna yang termuda : ',lists)
+      tanya = input('klik enter untuk kembali ke menu admin...')
+      menu_admin()
+    
+def data_admin ():
+    data = [
+            {'username ': 'reza','password': 'reza12'},
+            {'username ': 'nafiz','password': 'nafiz12'},
+            {'username ': 'reo','password': 'reo12'},
+         ]
+    df = pandas.DataFrame(data)
+    print(df)
+    lists = sorted(data, key=lambda x: x['password'],reverse=True) #sorted  (dsc)
+    print('berikut ini adalah sorting data admin bedasarkan descanding : \t',lists)
+    tanya = input('klik enter untuk kembali ke menu admin...')
+    menu_admin()
 
-      username =sum(datas ['umur'/2]for datas in data)
-      print('total pengguna aplikasi uangku  : ', username,{'umur'})
-
+def exit_program():
+     tanya = input('klik enter untuk keluar dari program...')
+     os.system('cls')
+     time.sleep(4)
 
 #User
 #1.main program user
@@ -246,8 +260,6 @@ def pilihan (): #harus dibenerin
     choise2=1000000
     print ('3\t',1500000)
     choise3=1500000
-    print ('4\t',2000000)
-    choise3=2000000
     user = (input('masukan pilihan : '))
     if user == '1' :
             print('3 angsuran\t','6 angsuran\t','12 angsuran') #bulan
@@ -256,14 +268,17 @@ def pilihan (): #harus dibenerin
             if user1 =='3' :
                 Bunga = (lambda choise1,bulan3 : (choise1+choise1*0.5)/bulan3)(choise1,bulan3)
                 print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan3, 'hari(3 bulan)')
+                menu_awal()
             elif user1 =='6': 
                 bulan6 = 180 #hari
                 Bunga = (lambda choise1,bulan6 : (choise1+choise1*0.5)/bulan6)(choise1,bulan6)
                 print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan6, 'hari(6 bulan)')
+                menu_awal()
             elif user1 =='12' :
                 bulan12 = 365 #hari
                 Bunga = (lambda choise1,bulan12 : (choise1+choise1*0.5)/bulan12)(choise1,bulan12)
                 print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan12, 'hari(12 bulan)')
+                menu_awal()
     elif user == '2' :
             print('3 angsuran\t','6 angsuran\t','12 angsuran') #bulan
             bulan3 = 90 #hari
@@ -271,14 +286,17 @@ def pilihan (): #harus dibenerin
             if user1 =='3' :
                 Bunga = (lambda choise2,bulan3 : (choise2+choise2*0.5)/bulan3)(choise2,bulan3)
                 print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan3, 'hari(3 bulan)')
+                menu_awal()
             elif user1 =='6': 
                 bulan6 = 180 #hari
                 Bunga = (lambda choise2,bulan6 : (choise2+choise2*0.5)/bulan6)(choise2,bulan6)
                 print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan6, 'hari(6 bulan)')
+                menu_awal()
             elif user1 =='12' :
                 bulan12 = 365 #hari
                 Bunga = (lambda choise2,bulan12 : (choise2+choise2*0.5)/bulan12)(choise2,bulan12)
                 print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan12, 'hari(12 bulan)')
+                menu_awal()
     elif user == '3' :
             print('3 angsuran\t','6 angsuran\t','12 angsuran') #bulan
             bulan3 = 90 #hari
@@ -286,14 +304,17 @@ def pilihan (): #harus dibenerin
             if user1 =='3' :
                 Bunga = (lambda choise3,bulan3 : (choise3+choise3*0.5)/bulan3)(choise3,bulan3)
                 print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan3, 'hari(3 bulan)')
+                menu_awal()
             elif user1 =='6': 
                 bulan6 = 180 #hari
                 Bunga = (lambda choise3,bulan6 : (choise3+choise3*0.5)/bulan6)(choise3,bulan6)
                 print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan6, 'hari(6 bulan)')
+                menu_awal()
             elif user1 =='12' :
                 bulan12 = 365 #hari
                 Bunga = (lambda choise3,bulan12 : (choise3+choise3*0.5)/bulan12)(choise3,bulan12)
                 print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan12, 'hari(12 bulan)')
+                menu_awal()
     
 #2. login and daftar user
 def login_user (): #harus dibenerin
