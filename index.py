@@ -142,7 +142,6 @@
 # menu()
 import os,time,pandas,csv
 from datetime import datetime
-from functools import reduce
 
 # a = [1, 2, 3, 4]
 # sum_a = reduce(lambda x, y:x+y, a)
@@ -175,8 +174,6 @@ def admin_Login():
     password_admin = input('masukan password admin : ')
     menu_admin()if [user_admin,password_admin] in admin else admin_Login()
 
-
-
 def menu_admin():
     print('-'*36)
     print('\t\t MENU Admin')
@@ -195,16 +192,16 @@ def data_Peminjam () :
          {'nasabah': 'Farid', 'tanggal lahir': '27-10-2002', 'alamat': 'Jember','deposit' : 1000000,'tanggal depo' : '01-3-2022','angsuran ' : 6},
          {'nasabah': 'Rahyan', 'tanggal lahir': '12-4-1998', 'alamat': 'Jember','deposit' : 2000000,'tanggal depo' :'01-3-2022' ,'angsuran ' : 3},
          {'nasabah': 'Hefilia', 'tanggal lahir': '12-5-2002', 'alamat': 'Surabaya','deposit' : 1000000,'tanggal depo' :'02-3-2022' ,'angsuran ' : 3},
-         {'nasabah': 'Adrian', 'tanggal lahir': '12-4-1998', 'alamat': 'Malang','deposit' : 1000000,'tanggal depo' :'02-3-2022' ,'angsuran ' : 6},
-         {'nasabah': 'Raka', 'tanggal lahir': '12-4-1998', 'alamat': 'Sidoarjo','deposit' : 2000000,'tanggal depo' :'01-3-2022' ,'angsuran ' : 6},
-         {'nasabah': 'Dony', 'tanggal lahir': '12-4-1998', 'alamat': 'Bondowoso','deposit' : 2000000,'tanggal depo' :'07-3-2022' ,'angsuran ' : 3},
+         {'nasabah': 'Adrian', 'tanggal lahir': '12-4-1998', 'alamat': 'Malang','deposit' : 1500000,'tanggal depo' :'02-3-2022' ,'angsuran ' : 6},
+         {'nasabah': 'Raka', 'tanggal lahir': '12-4-1998', 'alamat': 'Sidoarjo','deposit' : 1500000,'tanggal depo' :'01-3-2022' ,'angsuran ' : 6},
+         {'nasabah': 'Dony', 'tanggal lahir': '12-4-1998', 'alamat': 'Bondowoso','deposit' : 1000000,'tanggal depo' :'07-3-2022' ,'angsuran ' : 3},
          {'nasabah': 'Gathan', 'tanggal lahir': '12-4-1998', 'alamat': 'Situbondo','deposit' : 500000,'tanggal depo' :'08-3-2022' ,'angsuran ' : 6},
          {'nasabah': 'Tisna', 'tanggal lahir': '12-4-1998', 'alamat': 'Surabya','deposit' : 500000,'tanggal depo' :'10-3-2022' ,'angsuran ' : 12},
          ]
     df = pandas.DataFrame(data)
     print(df)
 
-    deposit = [datas for datas in data if datas['deposit']<2000000] #proses filtering menggunakan List Comprehension
+    deposit = [datas for datas in data if datas['deposit']>500000] #proses filtering menggunakan List Comprehension
     print(f'berikut ini data yang sudah di filter dengan deposit yang kurang dari 2 jt : \n ',deposit,{'nasabah'},{'deposit'})
 
     deposit =sum (datas ['deposit']for datas in data)
