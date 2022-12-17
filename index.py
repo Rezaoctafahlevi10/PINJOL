@@ -190,7 +190,7 @@ def menu_admin():
 def data_Peminjam () :
     data = [{'nasabah': 'Rizky', 'tanggal lahir': '14-12-2002', 'alamat': 'Jember','deposit' : 500000,'tanggal depo' :'1-1-2022','angsuran ' : 3},
          {'nasabah': 'Farid', 'tanggal lahir': '27-10-2002', 'alamat': 'Jember','deposit' : 1000000,'tanggal depo' : '01-3-2022','angsuran ' : 6},
-         {'nasabah': 'Rahyan', 'tanggal lahir': '12-4-1998', 'alamat': 'Jember','deposit' : 2000000,'tanggal depo' :'01-3-2022' ,'angsuran ' : 3},
+         {'nasabah': 'Rahyan', 'tanggal lahir': '12-4-1998', 'alamat': 'Jember','deposit' : 1000000,'tanggal depo' :'01-3-2022' ,'angsuran ' : 3},
          {'nasabah': 'Hefilia', 'tanggal lahir': '12-5-2002', 'alamat': 'Surabaya','deposit' : 1000000,'tanggal depo' :'02-3-2022' ,'angsuran ' : 3},
          {'nasabah': 'Adrian', 'tanggal lahir': '12-4-1998', 'alamat': 'Malang','deposit' : 1500000,'tanggal depo' :'02-3-2022' ,'angsuran ' : 6},
          {'nasabah': 'Raka', 'tanggal lahir': '12-4-1998', 'alamat': 'Sidoarjo','deposit' : 1500000,'tanggal depo' :'01-3-2022' ,'angsuran ' : 6},
@@ -202,7 +202,7 @@ def data_Peminjam () :
     print(df)
 
     deposit = [datas for datas in data if datas['deposit']>500000] #proses filtering menggunakan List Comprehension
-    print(f'berikut ini data yang sudah di filter dengan deposit yang kurang dari 2 jt : \n ',deposit,{'nasabah'},{'deposit'})
+    print(f'berikut ini data yang sudah di filter dengan deposit yang lebih dari 500.000 : \n ',deposit,{'nasabah'},{'deposit'})
 
     deposit =sum (datas ['deposit']for datas in data)
     print('total uang yang dipinjamkan kepada nasabah : ','Rp', deposit)

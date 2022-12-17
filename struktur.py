@@ -56,11 +56,11 @@ class Main:
 
     def Add(self):
         print(True)
-        # self.data.append([self.jrk])
+        self.data.append([self.jrk])
         value = []
-        # with open ('database.csv', 'w') as file:
-        #     fl = csv.writer(file)
-        #     fl.writerows(self.data)
+        with open ('dbpaket.csv', 'w') as file:
+            fl = csv.writer(file)
+            fl.writerows(self.data)
 
         print(self.L1.value)
         print(self.L2.value)
@@ -76,7 +76,7 @@ class Main:
 
     def menu(self):
         self.data = []
-        with open('database.csv') as file:
+        with open('dbpaket.csv') as file:
             fl = csv.reader(file)
             for i in fl:
                 self.data.append(i)
@@ -110,7 +110,7 @@ class Main:
         self.tbl.heading('jarak', text='Jarak')
 
         ##############################################
-        f = open("database.csv", "r")
+        f = open("dbpaket.csv", "r")
 
         for index, line in enumerate(f):
             temp = line.rstrip().split(',')
@@ -180,10 +180,11 @@ class Main:
         iFr6.pack(fill=X, pady=5)
 
         Label(iFr6, text='Layanan Yang Dipilih:').pack()
-        self.L1 = Radiobutton(iFr6, indicatoron=0, text='Layanan YES',value=3  ).pack() 
-        self.L2 = Radiobutton(iFr6, indicatoron=0, text='Layanan  SS',value=2  ).pack()
-        self.L3 = Radiobutton(iFr6, indicatoron=0, text='Layanan REG',value=1  ).pack()
-        self.L4 = Radiobutton(iFr6, indicatoron=0, text='Layanan OKE',value=0.5).pack()
+        # self.L1 = Radiobutton(iFr6, indicatoron=0, text='Layanan YES',value=3  ).pack() 
+        # self.L2 = Radiobutton(iFr6, indicatoron=0, text='Layanan  SS',value=2 ).pack()
+        # self.L3 = Radiobutton(iFr6, indicatoron=0, text='Layanan REG',value=1 ).pack()
+        # self.L4 = Radiobutton(iFr6, indicatoron=0, text='Layanan OKE',value=0.5).pack()
+        entry = Entry(text = 'Pelayanan', font = ('calibre',10,'bold'))
 
         #######################################
         iFr7 = Frame(ins)
