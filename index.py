@@ -147,15 +147,9 @@ from datetime import datetime
 # sum_a = reduce(lambda x, y:x+y, a)
 # print(sum_a)
 
-#kekurangan :
-#1. data admin ==> database admin, dan nanti admin bisa ngefilter sesuai keinginan dan sum total peminjamna (di menu_awal pilihan dan buat databasenya)
-
-
 waktu = datetime.now()
-hari = waktu.day
-bulan = waktu.month
-tahun = waktu.year
-tanggal="{}/{}/{}".format(hari,bulan,tahun)
+
+
 
 #Meriview materi cvs metode read 
 # with open('login_user.csv','r')as logincsv :
@@ -249,8 +243,6 @@ def exit_program():
 
 #User
 #1.main program user
-def pinjam (): 
-    Bunga = (lambda x,y : x*0,5/y)
 def pilihan (): #harus dibenerin 
     print('NB : Bunga cuma 5% dan sudah termasuk biaya admin\n')
     print('NO |\tPeminjaman        |')
@@ -317,7 +309,7 @@ def pilihan (): #harus dibenerin
                 menu_awal()
     
 #2. login and daftar user
-def login_user (): 
+def login_user (): #nafiz
     Batasan = 3
     for j in range(Batasan) :
         File_db = open('login.csv','r')
@@ -329,12 +321,12 @@ def login_user ():
             Ypassword = password.strip ()
             if (username==Xusername) and (password == Ypassword ) :
                 Berhasil = True
-                print(f'Selamat Anda berhasil login' ,username,f'diakses pada ',tanggal)
+                print(f'Selamat Anda berhasil login' ,username,f'diakses pada ',waktu)
                 pilihan()
     else :
         print('melebihi batas, silahkan buat akun terlebih dahulu')
         daftar()    
-def daftar ():
+def daftar ():#nafiz
     username = input('masukan username Anda : ')    
     password = input('masukan password : ')
     newdata = {"username" : username , "password" : password }
@@ -343,11 +335,11 @@ def daftar ():
     pilihan()
     os.system('cls')
 
-def save(Username,Passoword) :
+def save(Username,Passoword) : #nafiz
     with open('login_user.csv', 'a', newline = '') as File_Db :
         File_Db.write("\n"+Username+ "," +Passoword )
 
-def user_login() :
+def user_login() : #reza
     print('-'*50)
     print('\tSELAMAT DATANG DI UANGKU (Halaman User)')
     print('-'*50)
@@ -356,7 +348,7 @@ def user_login() :
     user = input('Pilih menu : ')
     sukses_user = (login_user() if user =='1'  else (daftar() if user =='2' else user_login()) )
 
-def menu_awal () :
+def menu_awal () :#reza
     print('-'*50)
     print('\t\t SELAMAT DATANG DI UANGKU')
     print('-'*50)
