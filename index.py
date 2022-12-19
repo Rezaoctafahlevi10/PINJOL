@@ -165,7 +165,7 @@ tanggal="{}/{}/{}".format(hari,bulan,tahun)
 
 #admin
 def admin_Login():
-    admin = [] #diubah 
+    admin = [] 
     with open ('admin.csv') as adm:
         admn = csv.reader(adm)
         for i in admn:
@@ -185,7 +185,8 @@ def menu_admin():
     # statement1 if expression1 else (statement2 if expression2 else statement3)
     choice = input('Menu pilihan : ')
     # tes = (data_Peminjam)if choice =='1'  else ((data_pengguna) if choice =='2'  else menu_admin(name))  (data_admin) if choice =='3' else (menu_admin(name))
-    tes = (data_Peminjam ())if choice =='1' else exit_program() if choice=='4' else ((data_pengguna ()) if choice =='2' else  data_admin() if choice =='3'  else menu_admin())
+    tes = (data_Peminjam ())if choice =='1' else exit_program() if choice=='4' else ((data_pengguna ()) 
+            if choice =='2' else  data_admin() if choice =='3'  else menu_admin())
  
 def data_Peminjam () :
     data = [{'nasabah': 'Rizky', 'tanggal lahir': '14-12-2002', 'alamat': 'Jember','deposit' : 500000,'tanggal depo' :'1-1-2022','angsuran ' : 3},
@@ -200,6 +201,7 @@ def data_Peminjam () :
          ]
     df = pandas.DataFrame(data)
     print(df)
+
 
     deposit = [datas for datas in data if datas['deposit']>500000] #proses filtering menggunakan List Comprehension
     print(f'berikut ini data yang sudah di filter dengan deposit yang lebih dari 500.000 : \n ',deposit,{'nasabah'},{'deposit'})
@@ -220,6 +222,7 @@ def data_pengguna():
          ]
       df = pandas.DataFrame(data)
       print(df)
+    
       
       lists = sorted(data, key=lambda x: x['umur'],reverse=False) #sorted bedasarkan umur termudah  (asc)
       print('berikut ini adalah sorting bedasarkan umur data pengguna yang termuda : ',lists)
@@ -314,7 +317,7 @@ def pilihan (): #harus dibenerin
                 menu_awal()
     
 #2. login and daftar user
-def login_user (): #harus dibenerin
+def login_user (): 
     Batasan = 3
     for j in range(Batasan) :
         File_db = open('login.csv','r')
@@ -351,7 +354,7 @@ def user_login() :
     print('1. Login')
     print('2. Daftar')
     user = input('Pilih menu : ')
-    sukses_user = (login_user() if user =='1'  else (daftar() if user =='2' else user()) )
+    sukses_user = (login_user() if user =='1'  else (daftar() if user =='2' else user_login()) )
 
 def menu_awal () :
     print('-'*50)
