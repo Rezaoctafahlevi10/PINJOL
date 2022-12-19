@@ -254,60 +254,34 @@ def pilihan (): #harus dibenerin
     choise3=1500000
     user = (input('masukan pilihan : '))
     if user == '1' :
-            print('3 angsuran\t','6 angsuran\t','12 angsuran') #bulan
-            bulan3 = 90 #hari
-            user1 = input('masukana lama pembayarannya : ')
-            if user1 =='3' :
-                Bunga = (lambda choise1,bulan3 : (choise1+choise1*0.5)/bulan3)(choise1,bulan3)
-                print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan3, 'hari(3 bulan)')
-                menu_awal()
-            elif user1 =='6': 
-                bulan6 = 180 #hari
-                Bunga = (lambda choise1,bulan6 : (choise1+choise1*0.5)/bulan6)(choise1,bulan6)
-                print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan6, 'hari(6 bulan)')
-                menu_awal()
-            elif user1 =='12' :
-                bulan12 = 365 #hari
-                Bunga = (lambda choise1,bulan12 : (choise1+choise1*0.5)/bulan12)(choise1,bulan12)
-                print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan12, 'hari(12 bulan)')
-                menu_awal()
+            user1(choise1)
     elif user == '2' :
-            print('3 angsuran\t','6 angsuran\t','12 angsuran') #bulan
-            bulan3 = 90 #hari
-            user1 = input('masukana lama pembayarannya : ')
-            if user1 =='3' :
-                Bunga = (lambda choise2,bulan3 : (choise2+choise2*0.5)/bulan3)(choise2,bulan3)
-                print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan3, 'hari(3 bulan)')
-                menu_awal()
-            elif user1 =='6': 
-                bulan6 = 180 #hari
-                Bunga = (lambda choise2,bulan6 : (choise2+choise2*0.5)/bulan6)(choise2,bulan6)
-                print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan6, 'hari(6 bulan)')
-                menu_awal()
-            elif user1 =='12' :
-                bulan12 = 365 #hari
-                Bunga = (lambda choise2,bulan12 : (choise2+choise2*0.5)/bulan12)(choise2,bulan12)
-                print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan12, 'hari(12 bulan)')
-                menu_awal()
+            user1(choise2)
     elif user == '3' :
+            user1(choise3)
+    else :
+        pilihan()
+
+def user1(choise) :
             print('3 angsuran\t','6 angsuran\t','12 angsuran') #bulan
             bulan3 = 90 #hari
             user1 = input('masukana lama pembayarannya : ')
             if user1 =='3' :
-                Bunga = (lambda choise3,bulan3 : (choise3+choise3*0.5)/bulan3)(choise3,bulan3)
+                Bunga = (lambda choise,bulan3 : (choise+choise*0.5)/bulan3)(choise,bulan3)
                 print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan3, 'hari(3 bulan)')
                 menu_awal()
             elif user1 =='6': 
                 bulan6 = 180 #hari
-                Bunga = (lambda choise3,bulan6 : (choise3+choise3*0.5)/bulan6)(choise3,bulan6)
+                Bunga = (lambda choise,bulan6 : (choise+choise*0.5)/bulan6)(choise,bulan6)
                 print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan6, 'hari(6 bulan)')
                 menu_awal()
             elif user1 =='12' :
                 bulan12 = 365 #hari
-                Bunga = (lambda choise3,bulan12 : (choise3+choise3*0.5)/bulan12)(choise3,bulan12)
+                Bunga = (lambda choise,bulan12 : (choise+choise*0.5)/bulan12)(choise,bulan12)
                 print('jumlah yang harus dibayarkan setiap bulan adalah : ', 'Rp',round(Bunga,3), 'dan angsuran selama : ', bulan12, 'hari(12 bulan)')
                 menu_awal()
-    
+
+
 #2. login and daftar user
 def login_user (): #nafiz
     Batasan = 3
